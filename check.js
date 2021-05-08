@@ -32,18 +32,12 @@ function checkAccount(account) {
   const response = {
     name: null,
     status: true,
-    email: null
-  }
-
-  if (account.hold) {
-    response.email = account.email
   }
   if (result) {
     response.name = result.firstName
   } else {
     response.status = false
   }
-
   return response
 }
 

@@ -1,3 +1,7 @@
 <div class="container">
-  <h1 class="font-monospace fw-bold text-info my-4">Welcome back, {{ result.name }} !</h1>
+  <h1 class="font-monospace fw-bold text-info my-4">Welcome back, {{ userAccount.name }} !</h1>
+
+  <form action="/logout" method="post" class="mt-5">
+    <button class="btn btn-outline-light" type="submit">Sign Out</button>
+  </form>
 </div>
