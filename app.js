@@ -22,10 +22,9 @@ app.get('/', (req, res) => {
   if (req.session.name) {
     res.redirect(`/${userAccount.name}`)
   } else {
-    const reset = { status: true }
+    const reset = { status: true } // 控制error message
     return res.render('index', { result: reset })
   }
-  
 })
 
 app.get('/:name', (req, res) => {
@@ -40,15 +39,14 @@ app.post('/login', (req, res) => {
   const account = req.body // email, password
   const result = checkAccount(account) // name, status
   if (result.status) {
-    userAccount.name = result.name
-    userAccount.email = account.email
+    userAccount = result
     req.session.name = userAccount.name
     return res.redirect(`/${userAccount.name}`)
   } else if (account.hold) {
-    userAccount.email = account.email
-    return res.render('index', { userAccount })
+    userAccount.email = result.email
+    return res.render('index', { userAccount }) // 記住我需傳email資訊使用
   } else {
-    return res.render('index', { result })
+    return res.render('index', { result }) // 控制error message生成傳認證未過status
   }
 })
 

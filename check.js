@@ -31,6 +31,7 @@ function checkAccount(account) {
 
   const response = {
     name: null,
+    email: account.email,
     status: true,
   }
   if (result) {
